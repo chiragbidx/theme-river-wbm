@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Material - Panda</title>
+        <link rel="stylesheet" href="./output.css" />
+        <link rel="icon" type="image/png" href="assets/panda-icon.png" />
+    </head>
+
+    <body>
+
+        <nav class="sticky top-0 z-50 flex w-full items-center justify-between px-4 py-3.5 backdrop-blur-md md:px-16 lg:px-24">
+            <a href="/">
+                <img src="assets/panda.png" alt="logo" class="h-7.5 w-auto" width="205" height="48" />
+            </a>
+
+            <div class="hidden items-center space-x-6 md:flex">
+                <a href="/" class="hover:text-black transition">Home</a>
+                <div class="group relative">
+                    <button id="productsBtn" class="flex items-center gap-1 hover:text-black">
+                        Products
+                        <i id="chevronIcon" data-lucide="chevron-down" class="lucide size-4 transition-transform" aria-hidden="true"></i>
+                    </button>
+
+                    <div id="productsMenu" class="absolute top-6 left-0 z-40 w-[500px] rounded-md border border-gray-100 bg-white p-3 shadow-lg invisible opacity-0 -translate-y-2 transition-all duration-200 ease-in-out group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
+                        <p>Explore our AI tools</p>
+                        <div class="mt-3 grid grid-cols-2 gap-2">
+                            <a href="/products/text-to-slides" class="group/link flex items-center gap-2 rounded-md p-2 transition hover:bg-gray-100">
+                                <div class="rounded-md btn p-2">
+                                    <i data-lucide="file-text" class="lucide size-4.5 text-white transition duration-300 group-hover/link:scale-110" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Text to Slides</p>
+                                    <p class="text-sm text-gray-400">Convert text to slides</p>
+                                </div>
+                            </a>
+
+                            <a href="/products/image-to-slides" class="group/link flex items-center gap-2 rounded-md p-2 transition hover:bg-gray-100">
+                                <div class="rounded-md btn p-2">
+                                    <i data-lucide="image-up" class="lucide size-4.5 text-white transition duration-300 group-hover/link:scale-110" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Image to Slides</p>
+                                    <p class="text-sm text-gray-400">Convert images to slides</p>
+                                </div>
+                            </a>
+
+                            <a href="/products/video-to-slides" class="group/link flex items-center gap-2 rounded-md p-2 transition hover:bg-gray-100">
+                                <div class="rounded-md btn p-2">
+                                    <i data-lucide="file-play" class="lucide size-4.5 text-white transition duration-300 group-hover/link:scale-110" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Video to Slides</p>
+                                    <p class="text-sm text-gray-400">Convert videos to slides</p>
+                                </div>
+                            </a>
+
+                            <a href="/products/audio-to-slides" class="group/link flex items-center gap-2 rounded-md p-2 transition hover:bg-gray-100">
+                                <div class="rounded-md btn p-2">
+                                    <i data-lucide="audio-lines" class="lucide size-4.5 text-white transition duration-300 group-hover/link:scale-110" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Audio to Slides</p>
+                                    <p class="text-sm text-gray-400">Convert audio to slides</p>
+                                </div>
+                            </a>
+
+                            <a href="/products/ideas-to-slides" class="group/link flex items-center gap-2 rounded-md p-2 transition hover:bg-gray-100">
+                                <div class="rounded-md btn p-2">
+                                    <i data-lucide="lightbulb" class="lucide size-4.5 text-white transition duration-300 group-hover/link:scale-110" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Ideas to Slides</p>
+                                    <p class="text-sm text-gray-400">Generate slides from ideas</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#stories" class="hover:text-black transition">Stories</a>
+                <a href="#pricing" class="hover:text-black transition">Pricing</a>
+                <a href="#testimonials" class="hover:text-black transition">Testimonials</a>
+                <a href="#faq" class="hover:text-black transition">FAQ</a>
+                <a href="#docs" class="hover:text-black transition">Docs</a>
+            </div>
+
+            <a href="/" class="hidden rounded-full btn px-8 py-2.5 font-medium text-white transition hover:opacity-90 md:inline-block"> Sign Up </a>
+
+            <button id="openMenu" class="transition active:scale-90 md:hidden">
+                <i data-lucide="menu" class="lucide size-6.5" aria-hidden="true"></i>
+            </button>
+        </nav>
+
+        <div id="mobileMenu" class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-white/20 text-lg font-medium backdrop-blur-2xl transition duration-300 md:hidden -translate-x-full">
+            <div class="text-center space-y-4">
+                <a href="/" class="block text-gray-800 hover:text-black">Home</a>
+                <div>
+                    <button id="mobileProductsBtn" class="flex items-center justify-center gap-1 text-gray-800">
+                        Products
+                        <i id="mobileChevron" data-lucide="chevron-down" class="lucide size-4 transition-transform" aria-hidden="true"></i>
+                    </button>
+                    <div id="mobileProductsMenu" class="hidden mt-2 flex flex-col gap-2 text-sm text-left">
+                        <a href="products/text-to-slides" class="text-gray-600 hover:text-black">Text to Slides</a>
+                        <a href="products/image-to-slides" class="text-gray-600 hover:text-black">Image to Slides</a>
+                        <a href="products/video-to-slides" class="text-gray-600 hover:text-black">Video to Slides</a>
+                        <a href="products/audio-to-slides" class="text-gray-600 hover:text-black">Audio to Slides</a>
+                        <a href="products/ideas-to-slides" class="text-gray-600 hover:text-black">Ideas to Slides</a>
+                    </div>
+                </div>
+
+                <a href="/stories" class="block text-gray-800 hover:text-black">Stories</a>
+                <a href="#pricing" class="block text-gray-800 hover:text-black">Pricing</a>
+                <a href="#testimonials" class="block text-gray-800 hover:text-black">Testimonials</a>
+                <a href="#faq" class="block text-gray-800 hover:text-black">FAQ</a>
+                <a href="/docs" class="block text-gray-800 hover:text-black">Docs</a>
+            </div>
+
+            <a href="/" class="rounded-full btn px-8 py-2.5 font-medium text-white transition hover:opacity-90"> Sign Up </a>
+
+            <button id="closeMenu" class="rounded-md btn p-2 text-white ring-white active:ring-2">
+                <i data-lucide="x" class="lucide" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <main class="px-4">
+            <section class="flex flex-col items-center justify-center relative h-svh overflow-hidden">
+                <svg class="absolute inset-0 -z-10" width="1440" height="1018" viewBox="0 0 1440 1018" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#a)">
+                        <ellipse cx="271.282" cy="200.379" rx="271.282" ry="200.379" fill="#FBFFE1"></ellipse>
+                    </g>
+                    <g filter="url(#b)">
+                        <ellipse cx="993.487" cy="451.53" rx="359.487" ry="265.53" fill="url(#c)" fill-opacity=".1"></ellipse>
+                    </g>
+                    <defs>
+                        <filter id="a" x="-300" y="-300" width="1142.56" height="1000.76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                            <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                            <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_8119_961"></feGaussianBlur>
+                        </filter>
+                        <filter id="b" x="333.9" y="-114.1" width="1319.18" height="1131.26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                            <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                            <feGaussianBlur stdDeviation="150.05" result="effect1_foregroundBlur_8119_961"></feGaussianBlur>
+                            <feTurbulence type="fractalNoise" baseFrequency="inf inf" stitchTiles="stitch" numOctaves="3" result="noise" seed="9943"></feTurbulence>
+                            <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"></feColorMatrix>
+                            <feComponentTransfer in="alphaNoise" result="coloredNoise1">
+                                <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"></feFuncA>
+                            </feComponentTransfer>
+                            <feComposite operator="in" in2="effect1_foregroundBlur_8119_961" in="coloredNoise1" result="noise1Clipped"></feComposite>
+                            <feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood"></feFlood>
+                            <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"></feComposite>
+                            <feMerge result="effect2_noise_8119_961">
+                                <feMergeNode in="effect1_foregroundBlur_8119_961"></feMergeNode>
+                                <feMergeNode in="color1"></feMergeNode>
+                            </feMerge>
+                        </filter>
+                        <linearGradient id="c" x1="550.41" y1="500.394" x2="1343.15" y2="82.986" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#F6DFF4"></stop>
+                            <stop offset=".196" stop-color="#FF6E00"></stop>
+                            <stop offset=".407" stop-color="#F8C04D"></stop>
+                            <stop offset=".586" stop-color="#EF3EC2"></stop>
+                            <stop offset=".816" stop-color="#4700EC"></stop>
+                            <stop offset=".949" stop-color="#5100BA"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="flex flex-wrap items-center justify-center p-1.5 rounded-full border border-indigo-100">
+                    <div class="flex items-center -space-x-3">
+                        <img class="size-7 rounded-full border-3 border-white" alt="userImage1" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&amp;w=50" />
+                        <img class="size-7 rounded-full border-3 border-white" alt="userImage2" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&amp;w=50" />
+                        <img class="size-7 rounded-full border-3 border-white" alt="userImage3" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&amp;w=50&amp;h=50&amp;auto=format&amp;fit=crop" />
+                    </div>
+                    <p class="pl-2 pr-3 text-gray-600">Join community of 1m+ founders</p>
+                </div>
+                <h1 class="text-4xl md:text-6xl/18 text-center font-semibold max-w-2xl mt-5 bg-gradient-to-r from-black to-[#748298] text-transparent bg-clip-text">
+                    Build, Launch &amp; Scale with <span class="bg-gradient-to-b from-indigo-300 to-indigo-600 bg-clip-text text-transparent">Panda</span>.
+                </h1>
+                <p class="text-slate-600 md:text-base max-md:px-2 text-center max-w-lg mt-3">A high-performance, serverless Postgres database that helps you ship fast and scale without limits.</p>
+                <button class="flex items-center gap-2 btn hover:opacity-90 text-white px-8 py-3 mt-8 rounded-full transition">
+                    <span>get started for free</span>
+                    <i data-lucide="arrow-right" class="lucide size-5" aria-hidden="true"></i>
+                </button>
+                <div class="text-gray-400 bg-gradient-to-b from-indigo-600/50 to-gray-300/50 p-px rounded-[7px] mt-8">
+                    <div class="flex items-center gap-2 bg-white rounded-md px-4 py-3">
+                        $ <span>npm install panda@latest</span>
+                        <button class="cursor-pointer ml-2">
+                            <i data-lucide="copy" class="lucide size-4" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="py-6 text-slate-600 mt-14">Trusting by leading brands, including —</p>
+                <div class="flex flex-wrap justify-between max-sm:justify-center gap-10 max-w-4xl w-full mx-auto py-4" id="logo-container">
+                    <img alt="logo" class="h-7 w-auto max-w-xs" src="assets/companies-logo/instagram.svg" />
+                    <img alt="logo" class="h-7 w-auto max-w-xs" src="assets/companies-logo/framer.svg" />
+                    <img alt="logo" class="h-7 w-auto max-w-xs" src="assets/companies-logo/microsoft.svg" />
+                    <img alt="logo" class="h-7 w-auto max-w-xs" src="assets/companies-logo/huawei.svg" />
+                    <img alt="logo" class="h-7 w-auto max-w-xs" src="assets/companies-logo/walmart.svg" />
+                </div>
+            </section>
+            <section class="flex flex-col md:flex-row items-center justify-center gap-20 mt-20">
+                <div class="relative shadow-2xl shadow-indigo-600/40 rounded-2xl overflow-hidden shrink-0">
+                    <img class="max-w-sm w-full object-cover rounded-2xl" alt="" src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&amp;w=451&amp;h=451&amp;auto=format&amp;fit=crop" />
+                    <div class="flex items-center gap-1 max-w-72 absolute bottom-8 left-8 bg-white p-4 rounded-xl">
+                        <div class="flex -space-x-4 shrink-0">
+                            <img alt="image" class="size-9 rounded-full border-[3px] border-white hover:-translate-y-1 transition z-1" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&amp;w=200" />
+                            <img alt="image" class="size-9 rounded-full border-[3px] border-white hover:-translate-y-1 transition z-[2]" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&amp;w=200" />
+                            <img alt="image" class="size-9 rounded-full border-[3px] border-white hover:-translate-y-1 transition z-[3]" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&amp;w=200&amp;h=200&amp;auto=format&amp;fit=crop" />
+                            <div class="flex items-center justify-center text-xs text-white size-9 rounded-full border-[3px] border-white bg-indigo-600 hover:-translate-y-1 transition z-[4]">50+</div>
+                        </div>
+                        <p class="text-sm font-medium text-slate-800">Join our developer community</p>
+                    </div>
+                </div>
+                <div class="text-sm text-slate-600 max-w-md">
+                    <h1 class="text-xl uppercase font-semibold text-slate-700">What we do?</h1>
+                    <div class="w-24 h-[3px] rounded-full bg-gradient-to-r from-indigo-600 to-[#DDD9FF]"></div>
+                    <p class="mt-8">Panda helps you build faster by transforming your design vision into fully functional, production-ready UI components.</p>
+                    <p class="mt-4">Whether you're launching a SaaS app, landing page, or dashboard, our collection of Tailwind CSS components is crafted to boost your development speed and improve user experience.</p>
+                    <p class="mt-4">From UI design systems to automation-ready layouts, Panda empowers you to build beautifully and scale effortlessly.</p>
+                    <button class="flex items-center gap-2 mt-8 hover:opacity-90 transition btn py-3 px-8 rounded-full text-white">
+                        <span>Read more</span>
+                        <i data-lucide="arrow-right" class="lucide size-5" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </section>
+            <section class="flex flex-col items-center justify-center mt-40">
+                <div class="flex flex-col items-center justify-center">
+                    <h3 class="text-center text-[32px] font-semibold">Our Latest Creations</h3>
+                    <p class="mt-3 max-w-xs text-center text-gray-500 md:max-w-lg">A visual collection of our most recent works - each piece crafted with intention, emotion, and style.</p>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-10 mt-16">
+                    <div class="max-w-80 hover:-translate-y-0.5 transition duration-300">
+                        <img class="rounded-xl" alt="Autumn Leaf Harmony" src="assets/image-1.png" />
+                        <h3 class="text-base font-semibold text-slate-700 mt-4">Autumn Leaf Harmony</h3>
+                        <p class="text-sm text-gray-500 mt-1">Earthy seasonal tones with organic patterns, bringing coziness and natural charm into interiors.</p>
+                    </div>
+                    <div class="max-w-80 hover:-translate-y-0.5 transition duration-300">
+                        <img class="rounded-xl" alt="Winter Frost Calm" src="assets/image-2.png" />
+                        <h3 class="text-base font-semibold text-slate-700 mt-4">Winter Frost Calm</h3>
+                        <p class="text-sm text-gray-500 mt-1">Crisp whites with frosted details, enhancing minimalist and contemporary spaces with sophistication.</p>
+                    </div>
+                    <div class="max-w-80 hover:-translate-y-0.5 transition duration-300">
+                        <img class="rounded-xl" alt="Spring Canvas" src="assets/image-3.png" />
+                        <h3 class="text-base font-semibold text-slate-700 mt-4">Spring Canvas</h3>
+                        <p class="text-sm text-gray-500 mt-1">Pastel floral tones that uplift interiors with beauty, freshness, and vibrant seasonal energy.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="testimonials" class="flex flex-col items-center justify-center">
+                <div class="mt-40 flex flex-col items-center justify-center">
+                    <h3 class="text-center text-[32px] font-semibold">Our Testimonials</h3>
+                    <p class="mt-3 max-w-xs text-center text-gray-500 md:max-w-lg">Hear from our satisfied customers about the benefits of using SlideX. We love hearing from our customers.</p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" id="testimonials-container"></div>
+            </section>
+            <section id="faq" class="flex flex-col items-center justify-center">
+                <div class="mt-40 flex flex-col items-center justify-center">
+                    <h3 class="text-center text-[32px] font-semibold">FAQ's</h3>
+                    <p class="mt-3 max-w-xs text-center text-gray-500 md:max-w-lg">Looking for answers to your frequently asked questions? Check out our FAQ's section below to find.</p>
+                </div>
+                <div id="faq-container" class="mx-auto mt-12 w-full max-w-xl bg-white"></div>
+            </section>
+            <section class="flex flex-col items-center justify-center mt-40">
+                <div class="flex flex-col items-center justify-center">
+                    <h3 class="text-center text-[32px] font-semibold">Join Newsletter</h3>
+                    <p class="mt-3 max-w-xs text-center text-gray-500 md:max-w-lg">A visual collection of our most recent works - each piece crafted with intention, emotion and style.</p>
+                </div>
+                <div class="flex bg-slate-100 text-sm p-1 rounded-full w-full max-w-xl my-10 border-2 border-white ring ring-slate-200">
+                    <input class="flex-1 rounded-full pl-5 max-md:py-3 outline-none" placeholder="Enter your email address" type="text" />
+                    <button class="font-medium hidden md:block btn text-white px-7 py-3 rounded-full hover:opacity-90 active:scale-95 transition">Get Updates</button>
+                </div>
+                <button class="font-medium md:hidden btn text-white px-7 py-3 rounded-full hover:opacity-90 active:scale-95 transition">Get Updates</button>
+            </section>
+        </main>
+
+        <footer class="px-4 md:px-16 lg:px-24 text-[13px] mt-32 text-gray-500">
+            <div class="flex flex-wrap items-start min-md:justify-between gap-10 md:gap-[60px]">
+                <a href="https://panda.new?utm_source=material" class="max-w-80">
+                                    <img src="assets/panda.png" alt="logo" class="h-7.5 w-auto" width="205" height="48" />
+                </a>
+                <div class="max-w-80">
+                    <p class="font-semibold text-gray-800">Company</p>
+                    <ul class="mt-5 space-y-2">
+                        <li><a href="/about-us" class="hover:text-indigo-500 transition">About us</a></li>
+                        <li><a href="/our-vision" class="hover:text-indigo-500 transition">Our vision</a></li>
+                        <li><a href="/community" class="hover:text-indigo-500 transition">Community</a></li>
+                        <li><a href="/careers" class="hover:text-indigo-500 transition">Careers</a></li>
+                        <li><a href="/term-and-conditions" class="hover:text-indigo-500 transition">Term &amp; conditions</a></li>
+                        <li><a href="/privacy" class="hover:text-indigo-500 transition">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="max-w-80">
+                    <p class="font-semibold text-gray-800">Account</p>
+                    <ul class="mt-5 space-y-2">
+                        <li><a href="/settings" class="hover:text-indigo-500 transition">Settings</a></li>
+                        <li><a href="/refund-policy" class="hover:text-indigo-500 transition">Refund policy</a></li>
+                        <li><a href="/affiliates" class="hover:text-indigo-500 transition">Affiliates</a></li>
+                        <li><a href="/gift-cards" class="hover:text-indigo-500 transition">Gift cards</a></li>
+                    </ul>
+                </div>
+                <div class="max-w-80">
+                    <p class="font-semibold text-gray-800">Contact</p>
+                    <ul class="mt-5 space-y-2">
+                        <li><a href="/contact-us" class="hover:text-indigo-500 transition">Contact us</a></li>
+                        <li><a href="/instagram" class="hover:text-indigo-500 transition">Instagram</a></li>
+                        <li><a href="/linkedin" class="hover:text-indigo-500 transition">Linkedin</a></li>
+                        <li><a href="/github" class="hover:text-indigo-500 transition">Github</a></li>
+                    </ul>
+                </div>
+                <div class="max-w-80 md:ml-40">
+                    <p class="font-semibold text-gray-800">Sign up for newsletter</p>
+                    <p class="mt-5 text-sm">The latest news, articles and resources, sent to your inbox weekly.</p>
+                    <div class="flex items-center mt-4"><input class="bg-white w-full border border-gray-300 h-9 px-3 outline-none" type="email" /> <button class="flex shrink-0 items-center justify-center btn text-white h-9 px-6">Sign up</button></div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row py-7 mt-12 border-gray-200 md:justify-between max-md:items-center border-t max-md:text-center gap-2 items-end">
+                <p class="text-center">© 2025 <a href="https://panda.new?utm_source=material">Panda, All rights reserved.</a></p>
+                <div class="flex items-center gap-4">
+                    <a href="https://dribbble.com/panda" target="_blank" rel="noreferrer">
+                        <i data-lucide="dribbble" class="lucide size-5 text-gray-400 hover:text-indigo-500" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/panda" target="_blank" rel="noreferrer">
+                        <i data-lucide="linkedin" class="lucide size-5 text-gray-400 hover:text-indigo-500" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://x.com/panda" target="_blank" rel="noreferrer">
+                        <i data-lucide="twitter" class="lucide size-5 text-gray-400 hover:text-indigo-500" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@panda" target="_blank" rel="noreferrer">
+                        <i data-lucide="youtube" class="lucide size-6 text-gray-400 hover:text-indigo-500" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        </script>
+        <script src="/script.js"></script>
+
+        <!--
+          PANDA ELEMENT SELECTION SCRIPT
+          ===============================
+          Captures all element clicks inside the iframe and sends metadata to Bubble via postMessage.
+          Metadata captured: url, width, height, alt
+            ⚠ Do NOT remove or modify this script unless explicitly instructed by the admin.
+        -->
+        <script src="https://bfwqdadlcyndtaqmqtci.supabase.co/storage/v1/object/public/pandajs/panda-element-selection.js" defer></script>
+
+        <!--
+          PANDA BRANDING SCRIPT
+          ====================
+          Handles Panda-specific branding, logos, placeholders, and runtime injection for the iframe/editor.
+            ⚠ Do NOT remove or modify this script unless explicitly instructed by the admin.
+        -->
+        <script src="https://bfwqdadlcyndtaqmqtci.supabase.co/storage/v1/object/public/pandajs/panda-branding.js" defer></script>
+        <!--
+          PANDA AUTO RELOAD SCRIPT
+          ====================
+          Handles Panda HMR solution built on railway to hot reload changes in preview.
+            ⚠ Do NOT remove or modify this script unless explicitly instructed by the admin.
+        -->
+        <script>
+        const es = new EventSource("/__hmr");
+        es.onmessage = () => location.reload();
+        </script>
+    </body>
+</html>
